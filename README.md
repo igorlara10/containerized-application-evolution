@@ -90,7 +90,7 @@ Esses problemas fazem parte do projeto propositalmente para simular um cenário 
 
 ```bash
 # Clonar o repositório
-git clone https://github.com/seu-usuario/containerized-application-evolution.git
+git clone https://github.com/igorlara10/containerized-application-evolution.git
 cd containerized-application-evolution
 
 # Subir os containers
