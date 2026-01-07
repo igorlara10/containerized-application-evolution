@@ -1,113 +1,156 @@
-# Containerized Application Evolution 🚀
+🚀 Containerized Application Evolution
 
-Este repositório documenta a evolução de uma aplicação **containerizada**, construída passo a passo com foco em **Docker, Nginx, Backend, Frontend e Banco de Dados**, evoluindo posteriormente para **AWS e práticas DevOps**.
+Projeto prático de DevOps / Cloud, construído de forma evolutiva, com foco em boas práticas, baixo custo e aprendizado real, simulando o ciclo completo de uma aplicação moderna — do ambiente local ao deploy na AWS.
 
-O objetivo do projeto é demonstrar, de forma prática e didática, como uma aplicação real pode sair do ambiente local e evoluir para a nuvem, seguindo boas práticas de arquitetura e infraestrutura.
+Este repositório não mostra apenas o “funcionou”, mas como os problemas apareceram e foram resolvidos, refletindo um cenário próximo ao mundo real.
 
----
+🎯 Objetivo do Projeto
 
-## 🎯 Objetivo do Projeto
+Demonstrar, de forma prática:
 
-- Consolidar conhecimentos em **Docker e Docker Compose**
-- Entender a comunicação entre **Frontend, Backend, Nginx e Banco de Dados**
-- Simular um fluxo real de evolução de um projeto DevOps
-- Criar um **portfólio técnico evolutivo**, documentado por etapas
+Containerização de aplicações
 
----
+Comunicação entre serviços
 
-## 🧱 Arquitetura Geral (visão inicial)
+Uso de Nginx como reverse proxy
 
-- **Frontend**: aplicação web estática
-- **Backend**: API em FastAPI
-- **Banco de Dados**: PostgreSQL
-- **Nginx**: reverse proxy e ponto único de entrada
-- **Docker Compose**: orquestração local dos containers
+Deploy local e em cloud (AWS)
 
----
+Evolução gradual para infraestrutura como código
 
-## 📁 Estrutura do Repositório
+Mentalidade DevOps (testar → corrigir → evoluir)
 
+🧱 Arquitetura Geral
+
+Frontend: HTML/CSS/JS (site estático)
+
+Backend: FastAPI (Python)
+
+Banco de Dados: PostgreSQL
+
+Reverse Proxy: Nginx
+
+Containers: Docker + Docker Compose
+
+Cloud: AWS (EC2 – Free Tier)
+
+📁 Estrutura do Repositório
 containerized-application-evolution/
 │
 ├── part-01-local/
-│ ├── backend/
-│ ├── frontend/
-│ ├── nginx/
-│ ├── docker-compose.yaml
-│ └── README.md
+│   ├── frontend/
+│   ├── backend/
+│   ├── nginx/
+│   ├── docker-compose.yaml
+│   └── README.md
 │
 ├── part-02-aws-ec2/
-│ └── README.md
+│   ├── deploy-notes.md
+│   └── README.md
 │
-├── part-03-terraform-ci-cd/
-│ └── README.md
+├── part-03-terraform-aws/   # (em andamento)
+│   └── README.md
 │
 └── README.md
 
----
+🧪 Parte 01 — Ambiente Local Containerizado
 
-## 🧩 Partes do Projeto
+Nesta etapa, a aplicação foi construída e validada 100% localmente, garantindo que tudo funcionasse antes de qualquer subida para a cloud.
 
-### 🔹 Parte 01 — Ambiente Local Containerizado
-Nesta etapa, toda a aplicação é executada localmente utilizando Docker e Docker Compose.
+O que foi implementado:
 
-- Containers isolados por serviço
-- Comunicação via network bridge
-- Nginx atuando como reverse proxy
-- Backend integrado ao PostgreSQL
+🐳 Containers para Frontend, Backend e PostgreSQL
 
-📄 Detalhes completos em: `part-01-local/README.md`
+🔀 Nginx como reverse proxy
 
----
+🌐 Comunicação entre containers via Docker Network
 
-### 🔹 Parte 02 — Deploy na AWS (EC2)
-Nesta etapa, a aplicação será executada na **AWS**, utilizando uma instância EC2 (Free Tier).
+🔍 Endpoint /health para verificação do backend
 
-- Criação de infraestrutura básica na AWS
-- Instalação de Docker na EC2
-- Execução da aplicação via Docker Compose
-- Validação de acesso externo
+🧾 Cadastro de usuários (nome + CPF) persistido no banco
 
-📄 Detalhes em breve em: `part-02-aws-ec2/README.md`
+Problemas reais enfrentados:
 
----
+❌ Erro 502 Bad Gateway (Nginx)
 
-### 🔹 Parte 03 — Evolução DevOps (futuro)
-Planejada para etapas futuras do projeto:
+❌ Upstream incorreto apontando para porta inexistente
 
-- Infraestrutura como código
-- Automatização de deploy
-- Pipeline de CI/CD
-- Boas práticas de versionamento e entrega contínua
+❌ Ordem de inicialização dos serviços
 
-📄 Planejamento em: `part-03-terraform-ci-cd/README.md`
+❌ Configuração incorreta de rede entre containers
 
----
+✅ Todos os problemas foram diagnosticados, documentados e corrigidos, reforçando a importância de logs, testes e validação incremental.
 
-## 🔮 Melhorias Futuras (fora do escopo atual)
+📄 Detalhes completos em:
+part-01-local/README.md
 
-Este projeto foi estruturado para permitir futuras evoluções, como:
+☁️ Parte 02 — Deploy na AWS (EC2)
 
-- Uso de serviços gerenciados na AWS
-- Escalabilidade da aplicação
-- Envio de e-mail de confirmação de cadastro
-- Separação de ambientes (test / prod)
+Após validação local, a aplicação foi levada para a AWS, mantendo a mesma arquitetura containerizada.
 
-Esses pontos fazem parte da visão de crescimento do projeto.
+O que foi feito:
 
----
+🖥️ Criação de instância EC2 (Free Tier)
 
-## 📌 Observação Importante
+🔐 Configuração de Security Groups
 
-Este repositório **não representa um projeto final**, mas sim um **processo de aprendizado contínuo**, documentando decisões técnicas, erros encontrados e soluções aplicadas — exatamente como ocorre em ambientes reais.
+🐳 Instalação manual do Docker e Docker Compose
 
----
+🚀 Execução do mesmo docker-compose em ambiente cloud
 
-## 👤 Autor
+🌍 Acesso via IP público da instância
 
-**Igor Lara**  
-Projeto desenvolvido com foco em estudos práticos de **DevOps e Cloud Computing**.
+Aprendizados importantes:
 
----
+Diferença entre ambiente local e cloud
 
-⭐ Se este projeto te ajudou ou chamou sua atenção, fique à vontade para acompanhar sua evolução.
+Permissões de usuário para Docker (docker.sock)
+
+Exposição correta de portas
+
+Validação de aplicação em ambiente real
+
+📄 Detalhes completos em:
+part-02-aws-ec2/README.md
+
+🧱 Parte 03 — Infraestrutura como Código (em andamento)
+
+Próxima evolução do projeto, focada em automação e padronização.
+
+Planejamento:
+
+🧱 Provisionamento da AWS com Terraform
+
+🖥️ Criação automática de EC2
+
+🔐 Security Groups via código
+
+🐳 Instalação automática do Docker
+
+🚀 Deploy sem configuração manual
+
+📄 Planejamento em:
+part-03-terraform-aws/README.md
+
+🔮 Melhorias Futuras (fora do escopo atual)
+
+Este projeto foi estruturado para permitir crescimento futuro, como:
+
+☁️ Uso de serviços gerenciados (RDS)
+
+📦 ECS / EKS ou Fargate
+
+🔁 Pipeline de CI/CD
+
+✉️ Envio de e-mail de confirmação de cadastro
+
+🧪 Separação de ambientes (test / prod)
+
+Essas melhorias fazem parte da visão de evolução, não do escopo atual.
+
+👤 Autor
+
+Igor Lara
+Focado em DevOps, Cloud e Automação, com aprendizado baseado em projetos práticos e resolução de problemas reais.
+
+🔗 GitHub: https://github.com/igorlara10
