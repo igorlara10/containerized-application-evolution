@@ -1,0 +1,38 @@
+# Parte 02 — Deploy Manual na AWS (EC2)
+
+Nesta etapa, a aplicação containerizada foi implantada manualmente em uma instância EC2 na AWS, com o objetivo de validar o funcionamento em ambiente cloud antes da automação.
+
+---
+
+## 🎯 Objetivo
+
+- Executar a aplicação fora do ambiente local
+- Validar portas, redes e acesso externo
+- Entender o comportamento real da aplicação na AWS
+
+---
+
+## ⚙️ Etapas Executadas
+
+- Criação de instância EC2 (Ubuntu)
+- Liberação das portas no Security Group:
+  - 80 (HTTP)
+  - 22 (SSH)
+- Instalação do Docker e Docker Compose
+- Clone do repositório na instância
+- Execução da aplicação via `docker-compose`
+
+---
+
+## 🧪 Testes Realizados
+
+- Acesso à aplicação via IP público da EC2
+- Validação do Nginx como ponto de entrada
+- Comunicação correta entre frontend, backend e banco de dados
+
+---
+
+## 📌 Observações Importantes
+
+- O deploy foi realizado de forma manual, propositalmente
+- Esta etapa prepara o terreno para a automação com Terraform
